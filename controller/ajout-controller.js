@@ -2,8 +2,6 @@
  * Created by Massil on 13/01/2017.
  */
 var express = require("express");
-
-var session = require("express-session");
 var bodyParser = require("body-parser");
 var multer = require("multer");
 var mime = require("mime");
@@ -24,11 +22,10 @@ var upload = multer({storage: storage});
 var parser = bodyParser.urlencoded({extended : true});
 var app = express();
 
-app.use(session({secret : "session-control"}));
-
 router.get("/", function(req , res){
+    console.log(req.session.name);
     if(req.session.name == undefined){
-        res.redirect({Location : "/"})
+        res.writeHead(302 , {Location : "/"})
     }else{
         if(req.session.name == "admin")
         {
@@ -36,7 +33,7 @@ router.get("/", function(req , res){
         }
         else
         {
-            res.redirect({Location : "/"});
+            res.writeHead(302 ,{Location : "/"});
         }
     }
 });
@@ -54,9 +51,7 @@ router.post("/" , parser , upload.single("image") , function (req , res) {
         dateSortie : date,
         Affiche : image
     });
-    film.save(function (err ,data) {
-        
-    });
+    film.save(function (err ,data) {});
     res.redirect({Location: "/ajout"});
 });
 

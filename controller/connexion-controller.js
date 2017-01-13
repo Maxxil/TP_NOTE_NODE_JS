@@ -21,8 +21,6 @@ router.post("/" , parser , function(req , res){
     utilisateur
         .find({pseudo : pseudo})
         .exec(function(err , data){
-            console.log(data);
-            console.log(password);
             if(err)
                 console.log("L'utilisateur n'existe pas.");
             else{
@@ -35,9 +33,9 @@ router.post("/" , parser , function(req , res){
                     }
                 }
             }
-            res.redirect({Location : "/"});
         });
-
+    res.writeHead(302 , {Location : "/"});
+    res.end();
 });
 
 module.exports = router;
