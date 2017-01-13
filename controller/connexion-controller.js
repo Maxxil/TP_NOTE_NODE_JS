@@ -3,7 +3,6 @@
  */
 var express = require("express");
 var router = express.Router();
-var session = require("express-session");
 var utilisateur = require("./../model/utilisateur");
 var hash = require("bcrypt-nodejs");
 var bodyParser = require("body-parser");
@@ -16,24 +15,29 @@ router.get("/" , function(req , res){
 });
 
 router.post("/" , parser , function(req , res){
-    var pseudo = hash.hashSync(req.body.pseudo);
-    var password = hash.hashSync(req.body.password);
+    var pseudo = req.body.pseudo;
+    var password = req.body.password;
+    var passHash = hash.hashSync(password);
     utilisateur
-        .find({pseudo : pseudo , password : password})
-        .exec(function(err , res){
+        .find({pseudo : pseudo})
+        .exec(function(err , data){
+            console.log(data);
+            console.log(password);
             if(err)
                 console.log("L'utilisateur n'existe pas.");
             else{
-                if(res.autorisation == "Full")
-                {
-                    app.use(session({name : "admin"}));
-                }
-                else{
-                    app.use(session({name : "user"}));
+                if(hash.compareSync(password,passHash)) {
+                    if (data.autorisation == "Full") {
+                        req.session.name = "admin";
+                    }
+                    else {
+                        req.session.name = "user";
+                    }
                 }
             }
+            res.redirect({Location : "/"});
         });
-    res.redirect({Location: "/"});
+
 });
 
 module.exports = router;
