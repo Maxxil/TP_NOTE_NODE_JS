@@ -16,15 +16,16 @@
 <% include shared/menu.html%>
 <div class="list-films">
     <h1>Derniers films</h1>
-
+    <form method="post">
         <% data.forEach(function(film){%>
             <div class="get-films">
             <h3><%= film.Titre %></h3>
-            <h3><%=film.Realisateur%></h3>
-            <img src=<%= film.Affiche %> />
+            <h5><%=film.Realisateur%></h5>
+            <img src="<%= film.Affiche %>" />
+            <input type="submit" value="Valider">
             </div>
         <%})%>
-
+    </form>
 </div>
 </body>
 </html>
