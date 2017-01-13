@@ -1,0 +1,32 @@
+{
+  "name": "film-annu",
+  "version": "1.0.0",
+  "description": "Annuaire des films",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maxxil/TP_NOTE_NODE_JS.git"
+  },
+  "keywords": [
+    "Annuaire",
+    "film",
+    "nodejs",
+    "express",
+    "mongoose",
+    "mongodb"
+  ],
+  "author": "KADI Massil / DO Kim Sang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Maxxil/TP_NOTE_NODE_JS/issues"
+  },
+  "homepage": "https://github.com/Maxxil/TP_NOTE_NODE_JS#readme",
+  "dependencies": {
+    "ejs": "^2.5.5",
+    "express": "^4.14.0",
+    "mongoose": "^4.7.6"
+  }
+}
