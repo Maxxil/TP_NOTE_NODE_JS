@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inscription</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="./../public/bootstrap/dist/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="./../public/bootstrap/dist/css/bootstrap-theme.min.css" >
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="./../public/bootstrap/dist/js/bootstrap.min.js" ></script>
+</head>
+<body>
+<% include shared/menu.html%>
+
+<form method="post" action="" style="margin-top: 10px">
+    <div class="form-group">
+        <label for="pseudo">Email address</label>
+        <input type="text" class="form-control" name="pseudo" id="pseudo" required>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+</body>
+</html>
