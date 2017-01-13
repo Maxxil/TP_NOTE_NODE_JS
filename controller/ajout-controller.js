@@ -4,6 +4,7 @@
 var router = require("express").Router();
 var bodyParser = require("body-parser");
 var multer = require("multer");
+var Film = require("./../model/film");
 
 var storage = multer.diskStorage({
     destination : function (req , file , cb){
@@ -13,7 +14,7 @@ var storage = multer.diskStorage({
         cb(null , file.fieldname + ' ' + Date.now());
     }
 });
-var upload = multer({dest: "/upload"});
+var upload = multer({storage: storage});
 
 var parser = bodyParser.urlencoded({extended : true});
 
@@ -24,6 +25,18 @@ router.get("/", function(req , res){
 router.post("/" , parser , upload.single("image") , function (req , res) {
     var titre = req.body.titre;
     var realisateur = req.body.realisateur;
+    var date = req.body.date;
+    var image = req.file.path;
+
+    var film = new Film({
+        Titre : titre,
+        Realisateur : realisateur,
+        dateSortie : date,
+        Affiche : image
+    });
+    film.save(function (err ,data) {
+        
+    });
 
 });
 
