@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajout</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="./../public/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="./../public/main.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="./../public/bootstrap/dist/css/bootstrap-theme.min.css" >
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="./../public/bootstrap/dist/js/bootstrap.min.js" ></script>
+</head>
+<body>
+<% include shared/menu.html%>
+<form method="post" action="" style="margin-top: 10px">
+    <div class="form-group">
+        <label for="titre">Email address</label>
+        <input type="text" class="form-control" name="titre" id="titre" required>
+    </div>
+    <div class="form-group">
+        <label for="realisateur">Password</label>
+        <input type="text" class="form-control" id="realisateur" name="realisateur">
+    </div>
+    <div class="form-group">
+        <label for="image">Password</label>
+        <input type="text" class="form-control" id="image" name="image">
+    </div>
+
+
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+</div>
+</body>
+</html>
