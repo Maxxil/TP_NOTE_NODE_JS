@@ -3,6 +3,8 @@
  */
 var router = require("express").Router();
 
-router.use("/" , require("./home-controller"));
+router.get("/" , function(req , res){
+    res.render("./../views/index.html");
+});
 
 module.exports = router;
