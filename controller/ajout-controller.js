@@ -8,10 +8,10 @@ var Film = require("./../model/film");
 
 var storage = multer.diskStorage({
     destination : function (req , file , cb){
-        cb(null , "/upload")
+        cb(null , "upload")
     },
     filename : function (req , file , cb) {
-        cb(null , file.fieldname + ' ' + Date.now());
+        cb(null , file.name + ' ' + Date.now() );
     }
 });
 var upload = multer({storage: storage});
@@ -26,6 +26,7 @@ router.post("/" , parser , upload.single("image") , function (req , res) {
     var titre = req.body.titre;
     var realisateur = req.body.realisateur;
     var date = req.body.date;
+    console.log(req.file);
     var image = req.file.path;
 
     var film = new Film({
@@ -37,7 +38,7 @@ router.post("/" , parser , upload.single("image") , function (req , res) {
     film.save(function (err ,data) {
         
     });
-
+    res.redirect({Location: "/ajout"});
 });
 
 

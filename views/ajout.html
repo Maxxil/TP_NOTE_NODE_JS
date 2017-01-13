@@ -14,7 +14,7 @@
 </head>
 <body>
 <% include shared/menu.html%>
-<form method="post" action="" style="margin-top: 10px">
+<form method="post" action="" style="margin-top: 10px" enctype="multipart/form-data">
     <div class="form-group">
         <label for="titre">Titre</label>
         <input type="text" class="form-control" name="titre" id="titre" required>
@@ -24,12 +24,16 @@
         <input type="text" class="form-control" id="realisateur" name="realisateur">
     </div>
     <div class="form-group">
-        <label for="image">Image</label>
-        <input type="file" class="form-control" id="image" name="image">
+        <div class='input-group date' id='datetimepicker5'>
+            <input type='text' class="form-control" />
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="date">Date de sortie</label>
-        <input type="date" class="form-control" id="date" name="date">
+    <div >
+        <label for="image">Image</label>
+        <input type="file" class="glyphicon-upload" id="image" name="image">
     </div>
 
     <button type="submit" class="btn btn-default">Submit</button>
