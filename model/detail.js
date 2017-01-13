@@ -5,7 +5,6 @@ var Avis = require('./avis');
 var Schema = db.Schema;
 
 var detailSchema = new Schema({
-  dateSortie: 'String',
   dateAjout: 'String',
   Sypnosis: 'String'
 });

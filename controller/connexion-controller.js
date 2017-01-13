@@ -33,7 +33,7 @@ router.post("/" , parser , function(req , res){
                 }
             }
         });
-    res.end();
+    res.redirect({Location: "/"});
 });
 
 module.exports = router;

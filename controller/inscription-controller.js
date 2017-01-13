@@ -14,17 +14,27 @@ router.get("/" , function (req , res) {
 });
 
 router.post("/" , parser, function (req , res) {
-    var pseudo = hash.hashSync(req.body.pseudo);
+    var pseudo = req.body.pseudo;
     var password = hash.hashSync(req.body.password);
 
-    var user = new utilisateur({
-        pseudo : pseudo,
-        password : password
-    });
+    if(pseudo == admin) {
+        var user = new utilisateur({
+            pseudo: pseudo,
+            password: password,
+            autorisation : "Full"
+        });
+        user.save(function (err, data) {
+        });
+    }else{
+        var user = new utilisateur({
+            pseudo: pseudo,
+            password: password
+        });
+        user.save(function (err, data) {
+        });
+    }
 
-    user.save(function (err, data) {
 
-    });
     res.redirect("/connexion");
 });
 
