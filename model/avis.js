@@ -6,7 +6,7 @@ var Schema = db.Schema;
 var avisSchema = new Schema({
   pseudo: 'String',
   message: 'String',
-  note: 'int'
+  note: 'Number'
 });
 
 var Avis = db.model('Avis', avisSchema);
