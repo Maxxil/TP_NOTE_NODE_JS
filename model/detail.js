@@ -1,4 +1,6 @@
 var db = require('../config/db');
+var Film = require('./film');
+var Avis = require('./avis');
 
 var Schema = db.Schema;
 
