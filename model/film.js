@@ -6,7 +6,8 @@ var Schema = db.Schema;
 var filmSchema = new Schema({
     Titre: 'String',
     Réalisateur: 'String',
-    Affiche: 'String'
+    Affiche: 'String',
+    dateSortie: 'String'
 });
 
 var Film = db.model('Film', filmSchema);
