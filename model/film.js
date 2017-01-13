@@ -1,4 +1,5 @@
 var db = require('../config/db');
+var Detail = require('./detail');
 
 var Schema = db.Schema;
 
