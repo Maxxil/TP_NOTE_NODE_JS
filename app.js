@@ -10,7 +10,7 @@ app.engine("html" , require("ejs").__express);
 app.set("view engine" , "html");
 
 app.use("/public" , express.static(__dirname + "/public"));
-app.use(session({saveUninitialized : false, resave : false ,secret : "session-control"}));
+app.use(session({saveUninitialized : true, resave : true ,secret : "session-control"}));
 app.use("/" , require("./controller"));
 
 app.listen(1337 , function(){

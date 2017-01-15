@@ -6,7 +6,7 @@ var film = require("./../model/film");
 
 router.get("/" , function(req , res){
     film.find({}).exec(function(err , data){
-        res.render("./../views/index.html" , {data : data});
+        res.render("./../views/index.html" , {data : data });
     });
 });
 

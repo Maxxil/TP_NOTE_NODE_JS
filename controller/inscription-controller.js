@@ -18,6 +18,7 @@ router.post("/" , parser, function (req , res) {
     var password = hash.hashSync(req.body.password);
 
     if(pseudo == "admin") {
+        console.log("Add admin");
         var user = new utilisateur({
             pseudo: pseudo,
             password: password,
@@ -27,6 +28,7 @@ router.post("/" , parser, function (req , res) {
         user.save(function (err, data) {
         });
     }else{
+        console.log("Add user");
         var user = new utilisateur({
             pseudo: pseudo,
             password: password,

@@ -23,18 +23,14 @@ var parser = bodyParser.urlencoded({extended : true});
 var app = express();
 
 router.get("/", function(req , res){
-    console.log(req.session.name);
-    if(req.session.name == undefined){
-        res.writeHead(302 , {Location : "/"})
-    }else{
-        if(req.session.name == "admin")
-        {
-            res.render("./../views/ajout.html");
-        }
-        else
-        {
-            res.writeHead(302 ,{Location : "/"});
-        }
+    console.log(req.session.admin);
+    if(req.session.admin)
+    {
+        res.render("./../views/ajout.html");
+    }
+    else
+    {
+        res.writeHead(302 ,{Location : "/"});
     }
 });
 

@@ -7,7 +7,6 @@ var utilisateur = require("./../model/utilisateur");
 var hash = require("bcrypt-nodejs");
 var bodyParser = require("body-parser");
 
-var app = express();
 var parser = bodyParser.urlencoded({extended : true});
 
 router.get("/" , function(req , res){
@@ -25,16 +24,18 @@ router.post("/" , parser , function(req , res){
                 console.log("L'utilisateur n'existe pas.");
             else{
                 if(hash.compareSync(password,passHash)) {
-                    if (data.autorisation == "Full") {
-                        req.session.name = "admin";
+                    if (data[0].autorisation == "Full") {
+
+                        req.session.admin = true;
                     }
                     else {
-                        req.session.name = "user";
+                        req.session.admin = false;
                     }
+                    req.session.save(function(err){});
                 }
             }
         });
-    res.writeHead(302 , {Location : "/"});
+    res.writeHead(302 , {Location : "/" });
     res.end();
 });
 
