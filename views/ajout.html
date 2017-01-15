@@ -14,7 +14,7 @@
 </head>
 <body>
 <% include shared/menu.html%>
-<form method="post" action="" style="margin-top: 10px" enctype="multipart/form-data">
+<form method="post" style="margin-top: 10px" enctype="multipart/form-data">
     <div class="form-group">
         <label for="titre">Titre</label>
         <input type="text" class="form-control" name="titre" id="titre" required>
@@ -31,6 +31,12 @@
             </span>
         </div>
     </div>
+
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" class="form-control" id="description" name="description">
+    </div>
+
     <div >
         <label for="image">Image</label>
         <input type="file" class="glyphicon-upload" id="image" name="image">

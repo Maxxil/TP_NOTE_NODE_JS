@@ -7,7 +7,8 @@ var filmSchema = new Schema({
     Titre: 'String',
     Realisateur: 'String',
     dateSortie: 'String',
-    Affiche: 'String'
+    Affiche: 'String',
+    Detail : {type : Schema.Types.ObjectId , ref : 'Detail'}
 });
 
 var Film = db.model('Film', filmSchema);

@@ -6,6 +6,7 @@ var bodyParser = require("body-parser");
 var multer = require("multer");
 var mime = require("mime");
 
+var Detail = require('./../model/detail');
 var Film = require("./../model/film");
 
 var router = express.Router();
@@ -49,17 +50,24 @@ router.post("/" , parser , upload.single("image") , function (req , res) {
     var titre = req.body.titre;
     var realisateur = req.body.realisateur;
     var date = req.body.date;
-    console.log(req.file);
     var image = req.file.path;
-
+    var description = req.body.description;
+    var detail = new Detail({
+        dateAjout : Date.now(),
+        Description : description,
+        Avis : []
+    });
     var film = new Film({
         Titre : titre,
         Realisateur : realisateur,
         dateSortie : date,
-        Affiche : image
+        Affiche : image,
+        Detail : detail._id
     });
     film.save(function (err ,data) {});
-    res.redirect({Location: "/ajout"});
+    console.log("Redirection");
+    res.writeHead(302 ,{Location : "/"});
+    res.end();
 });
 
 

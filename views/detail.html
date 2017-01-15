@@ -15,27 +15,20 @@
 <body>
 <% include shared/menu.html%>
 <form method="post" action="" style="margin-top: 10px" enctype="multipart/form-data">
-    <div class="form-group">
-        <label for="titre">Titre</label>
-        <input type="text" class="form-control" name="titre" id="titre" required>
-    </div>
-    <div class="form-group">
-        <label for="realisateur">Realisateur</label>
-        <input type="text" class="form-control" id="realisateur" name="realisateur">
-    </div>
-    <div class="form-group">
-        <div class='input-group date' id='datetimepicker5'>
-            <input type='text' class="form-control" />
-            <span class="input-group-addon">
-                <span class="glyphicon glyphicon-calendar"></span>
-            </span>
+    <label>Titre: <%= data.Titre %></label><br>
+    <label>Réalisateur: <%= data.Realisateur %></label><br>
+    <label>Date de sortie: <%= data.dateSortie %></label><br>
+    <img src="<%= '/' + data.Affiche %>"><br>
+    <label>Date d'ajout: <%= data.Detail.dateAjout %></label><br>
+    <label>Description: <%= data.Detail.Sypnosis %></label><br>
+    <label>Avis: </label><br>
+    <%data.Detail.Avis.forEach(function(element){%>
+        <div id="avis">
+            <p><%= element.Pseudo %></p><br>
+            <label>Commentaire: </label><p><%= element.Message %></p><br>
+            <label>Note: </label><p><%= element.Note %></p><br>
         </div>
-    </div>
-    <div >
-        <label for="image">Image</label>
-        <input type="file" class="glyphicon-upload" id="image" name="image">
-    </div>
-
+    <%})%>
     <button type="submit" class="btn btn-default">Submit</button>
 </form>
 </div>
