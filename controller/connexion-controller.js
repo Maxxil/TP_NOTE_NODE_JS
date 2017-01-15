@@ -25,10 +25,11 @@ router.post("/" , parser , function(req , res){
             else{
                 if(hash.compareSync(password,passHash)) {
                     if (data[0].autorisation == "Full") {
-
+                        req.session.pseudo = pseudo;
                         req.session.admin = true;
                     }
                     else {
+                        req.session.pseudo = pseudo;
                         req.session.admin = false;
                     }
                     req.session.save(function(err){});
