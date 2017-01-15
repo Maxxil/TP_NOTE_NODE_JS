@@ -3,6 +3,7 @@
  */
 var router = require("express").Router();
 var film = require("./../model/film");
+var detail = require("./../model/detail");
 
 router.get("/"  , function(req , res){
     film.find({}).exec(function(err , data){
@@ -11,10 +12,11 @@ router.get("/"  , function(req , res){
 });
 
 router.get("/:idDetail" , function (req , res) {
-    console.log("coucou");
     film
         .find({_id : req.params.idDetail})
+        .populate("Detail")
         .exec(function (err , data) {
+            console.log(data.Detail);
             res.render("./../views/detail.html" , {data : data});
         });
 });

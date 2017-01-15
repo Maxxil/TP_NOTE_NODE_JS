@@ -5,6 +5,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var multer = require("multer");
 var mime = require("mime");
+var moment = require("date-utils");
 
 var Detail = require('./../model/detail');
 var Film = require("./../model/film");
@@ -53,7 +54,7 @@ router.post("/" , parser , upload.single("image") , function (req , res) {
     var image = req.file.path;
     var description = req.body.description;
     var detail = new Detail({
-        dateAjout : Date.now(),
+        dateAjout : Date.today(),
         Description : description,
         Avis : []
     });
@@ -64,8 +65,8 @@ router.post("/" , parser , upload.single("image") , function (req , res) {
         Affiche : image,
         Detail : detail._id
     });
+    detail.save(function (err ,data) {});
     film.save(function (err ,data) {});
-    console.log("Redirection");
     res.writeHead(302 ,{Location : "/"});
     res.end();
 });
