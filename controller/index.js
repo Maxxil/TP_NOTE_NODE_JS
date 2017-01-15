@@ -3,9 +3,9 @@
  */
 var router = require("express").Router();
 
-router.use("/" , require("./home-controller"));
 router.use("/connexion", require("./connexion-controller"));
 router.use("/inscription" , require("./inscription-controller"));
 router.use("/ajout" , require("./ajout-controller"));
+router.use("/" , require("./home-controller"));
 
 module.exports = router;

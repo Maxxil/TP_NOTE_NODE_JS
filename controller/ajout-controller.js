@@ -11,13 +11,24 @@ var Film = require("./../model/film");
 var router = express.Router();
 var storage = multer.diskStorage({
     destination : function (req , file , cb){
-        cb(null , "upload")
+        cb(null , "public/upload")
     },
     filename : function (req , file , cb) {
-        cb(null , file.name + ' ' + Date.now() + mime.extension(file.mimeTypes) );
+        cb(null , file.name + ' ' + Date.now() + '.' +mime.extension(file.mimetype) );
     }
 });
-var upload = multer({storage: storage});
+var upload = multer({
+    storage: storage,
+    fileFilter : function (req , file , cb){
+        var extension = ['jpg' , 'jpeg' , 'png' , 'bmp' , 'gif'];
+        var ext = mime.extension(file.mimetype);
+        if(extension.indexOf(ext)){
+            cb(null , true);
+        }else{
+            cb(new Error('Fichier incorrect'))
+        }
+
+    }});
 
 var parser = bodyParser.urlencoded({extended : true});
 var app = express();

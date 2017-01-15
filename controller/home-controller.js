@@ -10,4 +10,13 @@ router.get("/" , function(req , res){
     });
 });
 
+router.get("/:idDetail" , function (req , res) {
+    console.log("coucou");
+    film
+        .find({_id : req.params.idDetail})
+        .exec(function (err , data) {
+            res.render("./../views/detail.html" , {data : data});
+        });
+});
+
 module.exports = router;
