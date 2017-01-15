@@ -16,8 +16,9 @@ router.get("/:idDetail" , function (req , res) {
         .find({_id : req.params.idDetail})
         .populate("Detail")
         .exec(function (err , data) {
-            console.log(data.Detail);
-            res.render("./../views/detail.html" , {data : data});
+            console.log(data);
+            console.log(data[0].Detail);
+            res.render("./../views/detail.html" , {data : data[0]});
         });
 });
 
